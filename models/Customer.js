@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
+const Schema = mongoose.Schema;
 
-const CustomerSchema = new mongoose.Schema({
+// const CustomerPurchases = require()
+const CustomerSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -17,11 +19,7 @@ const CustomerSchema = new mongoose.Schema({
         trim: true,
         default: 0
     },
-    datePurchased: {
-        type: Date,
-        trim: true,
-        default: Date.now()
-    }    
+    purchases: [{ type: Schema.Types.ObjectId, ref: 'CustomerPurchases' }]    
 })
 
 CustomerSchema.plugin(timestamp);

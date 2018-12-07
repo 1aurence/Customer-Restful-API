@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
+const Schema = mongoose.Schema;
 
-const CustomerPurchaseSchema = new mongoose.Schema({
-  name: {
+const CustomerPurchaseSchema = new Schema({
+  productName: {
+    type: String,
+    required: true
+  },
+  productId: {
     type: String,
     required: true
   },
@@ -10,10 +15,15 @@ const CustomerPurchaseSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  purchased: {
+  purchaseDate: {
       type: Date,
       default: Date.now()
-  }
+  },
+   customerEmail: {
+    type: String,
+    required: true
+   }
+
 })
 
 // CustomerPurchaseSchema.plugin(timestamp);

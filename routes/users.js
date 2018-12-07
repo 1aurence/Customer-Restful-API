@@ -41,7 +41,7 @@ server.post('/auth', async (req, res, next) => {
         const user = await auth.authenticate(email, password);
         // Create JWT
         const token = jwt.sign(user.toJSON(), config.JWT_SECRET, {
-            expiresIn: '15m'
+            expiresIn: '60min'
         });
         const { iat, exp } = jwt.decode(token);
         // Respond with a token
